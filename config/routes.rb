@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     resources :users
     resources :books
+    namespace :admin do
+      root "admin#index"
+    end
   end
 end

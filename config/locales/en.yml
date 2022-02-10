@@ -72,3 +72,6 @@ en:
   publish_year: "Publish year"
   product_detail: "Product detail"
   author: "Author"
+  admin:
+    title: "Dashboard"
+    login: "Login"

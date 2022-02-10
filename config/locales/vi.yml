@@ -72,3 +72,6 @@ vi:
   publish_year: "Năm phát hành"
   product_detail: "Mô tả sản phẩm"
   author: "Tác giả"
+  admin:
+    title: "Bảng điều khiển"
+    login: "Đăng nhập"
