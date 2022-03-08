@@ -7,7 +7,7 @@ module API
         def find_user id
           @user = User.find_by id: id
 
-          return if @uesr
+          return @user if @user
 
           error!("User not found", 404)
         end

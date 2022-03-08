@@ -13,10 +13,8 @@ module API
           error_response(message: e.message, status: 404)
         end
 
-        rescue_from :all do |e|
-          raise e if Rails.env.development?
-
-          error_response(message: e.message, status: 500)
+        rescue_from Grape::Exceptions::ValidationErrors do |e|
+          error_response(message: e.message, status: 400)
         end
 
         helpers do
@@ -24,9 +22,9 @@ module API
             token = request.headers["Jwt-Token"]
             if AuthToken.find_by token: token
               user_id = TokenProvider.decode(token)["user_id"]
-              current_user = User.find_by id: user_id
+              @current_user = User.find_by id: user_id
             end
-            return if current_user
+            return if @current_user
 
             api_error!("You need login", "failure", 401, {})
           end
